@@ -1,0 +1,67 @@
+ <!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script>
+            function Robot(name, year, owner) {
+                this.name = name;
+                this.year = year;
+                this.owner = owner;
+            }
+            
+            Robot.prototype.maker = "The maker";
+            Robot.prototype.speak = "..0101..";
+            Robot.prototype.makeCoffee = function () {
+                console.log(this.name + " making coffee");
+            };
+            
+            Robot.prototype.blinkLights = function() {
+                console.log(this.name + " blinking Lights");
+            };
+            
+            var robby = new Robot("Robby", 1956, "Dr. Morbius");
+            var rosie = new Robot("Rosie", 1962, "George Jetson");
+            
+            robby.onOffSwitch = false;
+            robby.makeCoffee = function() {
+                console.log(this.name + " on my way to starbucks");
+            };
+            
+            rosie.cleanHouse = function() {
+                console.log(this.name + ", happy to clean");
+            };
+            
+            function SpaceRobot(name, year, owner, homePlanet) {
+                this.name = name;
+                this.year = year;
+                this.owner = owner;
+                this.homePlanet = homePlanet;
+            }
+            
+            SpaceRobot.prototype = new Robot();
+            
+            SpaceRobot.prototype.speak = function () {
+                alert(this.name + " says Sir, If I may venture an opinion...");
+            };
+            
+            SpaceRobot.prototype.pilot = function () {
+                alert(this.name + " says Thrusters? Are they important?");
+            };
+            
+            
+            var c3p0 = new SpaceRobot("C3P0", 1977, "Luke Skywalker", "Tatooine");
+            c3p0.speak();
+            c3p0.pilot();
+            console.log(c3p0.name + " was made by " + c3p0.maker);
+            
+            var simon = new SpaceRobot("Simon", 2009, "Carla Diana", "Earth");
+            simon.makeCoffee();
+            simon.blinkLights();
+            simon.speak();
+        
+        </script>
+    </body>
+</html>
